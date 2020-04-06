@@ -1,16 +1,14 @@
-
 <!doctype html>
 <html lang="en">
-{% load static %}
+
+{% load staticfiles %}
   <head>
-
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Mike B Website</title>
+    <title>{{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
@@ -51,51 +49,31 @@
   <body>
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'home' %}">Mike B</a>
+  <a class="navbar-brand" href="#">Mike B</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link active" href="#">Home</a>
-      <a class="nav-item nav-link" href="http://twitter.com/">Twitter</a>
-      <a class="nav-item nav-link" href="{% static 'resume-samples.pdf' %}">Resume</a>
-      <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
-    </div>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link active" href="#">Home</a>
+        <a class="nav-item nav-link" href="http://twitter.com/">Twitter</a>
+        <a class="nav-item nav-link" href="{% static 'resume-samples.pdf' %}">Resume</a>
+        <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+      </div>
   </div>
 </nav>
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1>Welcome to my site</h1>
-      <p class="lead text-muted">Thanks for your Visit - you should contact me to get to know more</p>
-      <p>
-        <a href="#" class="btn btn-primary my-2">Contact Me</a>
-      </p>
-      <img src="{% static 'profile pic.jpeg' %}"/>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src=" {{ job.image.url }}"/>
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
+  <div class="container">
+    <h1 class="text-center pt-3"> {{ blog.title }} published on {{blog.pub_date_pretty}} </h1>
+      <div class="col-md-12">
+          <a href="" class="card-text text-center"></a>
+          <img class="card-img-top img-rounded" src=" {{ blog.images.url }}"/>
+          <div class="card-body">
+            <p class="card-text">{{blog.summary}}</p>
           </div>
       </div>
-    {% endfor %}
-
-    </div>
-  </div>
-
 </main>
 
 <footer class="text-muted">
